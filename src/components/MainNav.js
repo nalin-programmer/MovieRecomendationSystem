@@ -36,12 +36,14 @@ export default function SimpleBottomNavigation() {
     } else if (value === 1) {
       history.push("/movies");
     } else if (value === 2) {
-      history.push("/signin");
+      history.push("/pastmovies");
     } else if (value === 3) {
+      history.push("/signin");
+    } else if (value === 4) {
       history.push("/series");
-    } else if (value == 4) {
-      history.push("/search");
     } else if (value == 5) {
+      history.push("/search");
+    } else if (value == 6) {
       history.push("/alldiscussions");
     }
   }, [value, history]);
@@ -65,6 +67,11 @@ export default function SimpleBottomNavigation() {
           <BottomNavigationAction
             style={{ color: "white" }}
             label="Movies"
+            icon={<MovieIcon />}
+          />
+          <BottomNavigationAction
+            style={{ color: "white" }}
+            label="Past Movies"
             icon={<MovieIcon />}
           />
           <BottomNavigationAction

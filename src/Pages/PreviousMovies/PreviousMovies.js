@@ -1,6 +1,23 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./PreviousMovies.css";
 export default function PreviousMovies() {
+  const [movie1, setMovie1] = useState("");
+  const [movie2, setMovie2] = useState("");
+  const [result, setResult] = useState([]);
+  function Find(e) {
+    e.preventDefault();
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:5000/getmovies",
+      data: {
+        movies: [movie1, movie2],
+      },
+    }).then((resp) => {
+      console.log(resp);
+    });
+  }
+
   return (
     <div className="signupbody">
       <div class="prevmoviecontainer">
@@ -12,13 +29,13 @@ export default function PreviousMovies() {
           <form>
             <label>Movie Name</label>
             <br />
-            <input type="text" />
+            <input type="text" onChange={(e) => setMovie1(e.target.value)} />
             <br />
-            <label>Rating</label>
+            <label>Movie2 Name</label>
             <br />
-            <input type="number" />
+            <input type="text" onChange={(e) => setMovie2(e.target.value)} />
             <br />
-            <button>Add</button>
+            <button onClick={Find}>Find</button>
             <br />
             <br />
           </form>
